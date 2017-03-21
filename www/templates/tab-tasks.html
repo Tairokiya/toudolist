@@ -1,0 +1,98 @@
+<ion-view view-title="Tasks">
+  <ion-nav-buttons side="left">
+    <!--<button class="button button-positive ion-navicon-round" ng-click="doSomething()">-->
+    <!--</button>-->
+  </ion-nav-buttons>
+  <ion-content>
+    <!-- Refresher -->
+    <!--<ion-refresher on-refresh="hello()"></ion-refresher>-->
+    <ion-refresher pulling-text="Pull to refresh..." on-refresh="hello()">
+    </ion-refresher>
+
+    <!--<div class="list">-->
+      <!--<button class="button button-positive button-full"-->
+              <!--ng-click="{{button_val}}"> <code>{{button_val}}</code> </button>-->
+      <!--<ion-input ng-init="button_val='array_download()'" ng-model="button_val">-->
+        <!--<label><input class="item-input" ng-model="button_val"></label>-->
+      <!--</ion-input>-->
+    <!--</div>-->
+
+
+    <div>
+
+      <!-- <div class="bar-subheader">
+      </div>
+ -->
+
+    <div class="list card" ng-repeat="(key,item) in taskPrototypes">
+
+      <div class="item item-icon-left stable-bg">
+        <i class="icon ion-social-markdown dark" style="text-align: center"></i>
+        <h2>{{item.name}}</h2>
+        <p>{{item.detail}}</p>
+      </div>
+
+      <a class="item" href="#">
+        <!-- Dynamic Properties -->
+        <div class="row">
+
+          <div class="col">
+            <p style="position: relative; display: run-in;">Combos:</p>
+            <h1>20</h1>
+          </div>
+
+          <div class="col" ng-init="t = getTotalPunishNum(key)">
+            <p style="position: relative; display: run-in;">Punish:</p>
+            <h1>{{t.normal}}<span>/{{t.dead}}</span></h1>
+          </div>
+
+          <div class="col">
+            <p ng-init="v = getRemainDays(key)"
+               style="position: relative; display: run-in;">Remaining Day{{ v > 1 ? "s":""}}:</p>
+            <h1>{{v}}<span ng-init="a = getTotalDays(key)" class="dark" style="font-size: small;">/{{a}}</span> </h1>
+          </div>
+
+        </div>
+      </a>
+
+      <!-- Yet to be done -->
+      <a class="item item-icon-left assertive" ng-show="todayStatus[item.id] === -1"
+      ng-click="uploadFinishedStatus(item.id);">
+        <i class="icon ion-flag"></i>
+        <p class="text-center assertive">Mark Finished</p>
+      </a>
+
+      <!-- Already Finished -->
+      <a class="item item-icon-left" ng-show="todayStatus[item.id] === 0">
+        <i class="icon ion-checkmark balanced"> </i>
+        <p class="text-center">Completed</p>
+      </a>
+
+      <!-- Not able to finish on time -->
+      <a class="item item-icon-left" ng-show="todayStatus[item.id] === 1">
+        <i class="icon ion-social-markdown stable"> </i>
+        <p class="text-center">Sleep and dream the pleasure of punishment</p>
+      </a>
+
+      <!-- Forgiven -->
+      <a class="item item-icon-left" ng-show="todayStatus[item.id] === 2">
+        <i class="icon ion-medkit positive"> </i>
+        <p class="text-center">Have a rest in my arm, kitty :~~ </p>
+      </a>
+
+      <!-- Never Forgiven : not implemented for now at least-->
+      <a class="item item-icon-left" ng-show="todayStatus[item.id] === 3" ng-click="helloPunish();">
+        <i class="icon ion-social-markdown assertive"> </i>
+        <p class="text-center">This is your extra punish</p>
+      </a>
+
+    </div>
+
+    </div>
+
+
+
+
+
+  </ion-content>
+</ion-view>

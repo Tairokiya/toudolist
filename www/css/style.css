@@ -1,0 +1,142 @@
+/* Empty. Add your own CSS if you like */
+/*http://cubic-bezier.com*/
+/*@-moz-keyframes hellocssanime {*/
+  /*0%  {background: #fc8c84; left: 0px; top: 0px;}*/
+  /*25% {background: #4cd964; left: 200px; top: 0px;}*/
+  /*50% {background: #007aff; left: 200px; top: 200px;}*/
+  /*75% {background: #ffe87c; left: 0px; top: 200px;}*/
+  /*100%{background: #fc8c84; left: 0px; top: 0px;}*/
+/*}*/
+
+/*@-webkit-keyframes hellocssanime {*/
+  /*0%  {background: #fc8c84; left: 0px; top: 0px;}*/
+  /*25% {background: #4cd964; left: 200px; top: 0px;}*/
+  /*50% {background: #007aff; left: 200px; top: 200px;}*/
+  /*75% {background: #ffe87c; left: 0px; top: 200px;}*/
+  /*100%{background: #fc8c84; left: 0px; top: 0px;}}*/
+
+/*@-o-keyframes hellocssanime {*/
+  /*0%  {background: #fc8c84; left: 0px; top: 0px;}*/
+  /*25% {background: #4cd964; left: 200px; top: 0px;}*/
+  /*50% {background: #007aff; left: 200px; top: 200px;}*/
+  /*75% {background: #ffe87c; left: 0px; top: 200px;}*/
+  /*100%{background: #fc8c84; left: 0px; top: 0px;}*/
+/*}*/
+
+/*@keyframes hellocssanime {*/
+  /*0%  {background: #fc8c84; !*left: 0px; top: 0px;*!}*/
+  /*25% {background: #4cd964; !*left: 200px; top: 0px;*!}*/
+  /*50% {background: #007aff; !*left: 200px; top: 200px;*!}*/
+  /*75% {background: #ffe87c; !*left: 0px; top: 200px;*!}*/
+  /*100%{background: #fc8c84; !*left: 0px; top: 0px;*!}*/
+/*}*/
+
+/*@keyframes a {*/
+  /*from，to { transform: none; }*/
+  /*50% { transform: scale(1.2); }*/
+  /*50% {background: #3a3a44; transform: scale(0.5,2); }*/
+  /*66%{background: #f3f3f3; width: 200px; }*/
+/*}*/
+
+/*@keyframes b {*/
+  /*from，to { transform: none; }*/
+  /*50% { transform: scale(1.2); }*/
+  /*from, to {background: #fc8c84; top:0px; }*/
+  /*50% {background: #ffe87c; top:30px; }*/
+/*}*/
+
+
+
+/*.task{*/
+  /*animation: b 3s ease infinite, a 3s 1 cubic-bezier(0, 0, .52, 3);*/
+  /*-webkit-animation-play-state: running;*/
+/*}*/
+
+/*.task:hover{*/
+  /*color: #fc8c84;*/
+  /*background: #fc8c84;*/
+  /*transition: 1s cubic-bezier(0, 0, .52, 3);*/
+  /*animation: b 4s, a 2s;*/
+
+  /*-webkit-animation-play-state: running;*/
+  /*-moz-animation-play-state: running;*/
+  /*-o-animation-play-state: running;*/
+  /*animation-play-state: paused;*/
+/*}*/
+
+/*.task {*/
+  /*animation: hellocssanime 2s ease 2 alternate;*/
+  /*transition: 0.3s linear;*/
+/*}*/
+
+
+
+
+
+/* Scale-In Animation */
+.scale-in {
+  -webkit-transform: scale(0.0);
+  transform: scale(0.0);
+  opacity: 0;
+}
+.scale-in.ng-enter,
+.scale-in > .ng-enter {
+  -webkit-transition: all cubic-bezier(.1, .7, .1, 1) 400ms;
+  transition: all cubic-bezier(.1, .7, .1, 1) 400ms;
+}
+.scale-in.ng-enter-active,
+.scale-in > .ng-enter-active {
+  -webkit-transform: scale(1);
+  transform: scale(1);
+  opacity: 1;
+}
+.scale-in.ng-leave,
+.scale-in > .ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+}
+
+
+/* slide-in-right
+ *
+ *
+ *
+ **/
+
+.slide-in-right {
+  -webkit-transform: translate3d(100%, 0, 0);
+  transform: translate3d(100%, 0, 0);
+}
+
+.slide-in-right.ng-enter, .slide-in-right > .ng-enter {
+  -webkit-transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+  transition: all cubic-bezier(0.1, 0.7, 0.1, 1) 400ms;
+}
+
+.slide-in-right.ng-enter-active, .slide-in-right > .ng-enter-active {
+  -webkit-transform: translate3d(0, 0, 0);
+  transform: translate3d(0, 0, 0);
+}
+
+.slide-in-right.ng-leave, .slide-in-right > .ng-leave {
+  -webkit-transition: all ease-in-out 250ms;
+  transition: all ease-in-out 250ms;
+}
+
+/* Like it :] */
+/*http://dabblet.com/gist/1745856*/
+
+/*@keyframes typing { from { width: 0; } }*/
+/*@keyframes blink-caret { 50% { border-color: transparent; } }*/
+
+/*h1 {*/
+  /*font: bold 200% Consolas, Monaco, monospace;*/
+  /*border-right: .1em solid;*/
+  /*width: 16.5em; !* fallback *!*/
+  /*width: 30ch; !* # of chars *!*/
+  /*margin: 2em 1em;*/
+  /*white-space: nowrap;*/
+  /*overflow: hidden;*/
+  /*animation: typing 20s steps(30, end), !* # of steps = # of chars *!*/
+  /*blink-caret .5s step-end infinite alternate;*/
+/*}*/
