@@ -68,13 +68,6 @@
         }
       };
 
-      //$ionicPopover.fromTemplateUrl('templates/modals/refreshHUD.html',{
-      //  scope: $scope,
-      //
-      //}).then(function(modal){
-      //  $scope.refreshHUD = modal;
-      //});
-
 
       $ionicModal.fromTemplateUrl('templates/modals/refreshHUD.html', function(modal){
         $scope.refreshHUD = modal;
@@ -92,6 +85,24 @@
       $scope.hideHUD = function(){
         $scope.refreshHUD.hide();
       };
+
+      $ionicModal.fromTemplateUrl('templates/modals/add-prototype.html',function(modal){
+        $scope.prototypeView = modal;
+      },{
+        scope : $scope,
+        animation : "slide-in-right"
+      });
+
+      $scope.showAddPrototypeModal = function(){
+        $scope.prototypeView.show();
+      };
+
+      $scope.addPrototype = function(title, detail, punishRequest){
+        window.alert("title = " + title + " detail = "+ detail + "punish = " + punishRequest);
+        $scope.prototypeView.hide();
+      };
+
+
 
       $scope.hello = function(){
         $scope.$broadcast('scroll.refreshComplete');
@@ -220,24 +231,44 @@
         var isTimeExceed = (newDateTime - $scope.latest.markedTime > onedayElapsedTime);
 
         // 2 ID not accord
-        var isIDNotAccord = !($scope.taskPrototypes.length === $scope.todayStatus.length);
-        return isTimeExceed || isIDNotAccord;
+        angular.forEach($scope.taskPrototypes, function(value,key){
+          console.log(key,value);
+        });
 
+        angular.forEach($scope.todayStatus, function(value,key){
+          console.log(key,value);
+        });
+
+        //var isIDNotAccord = true;
+        var isIDNotAccord = false;
+
+
+        return isTimeExceed || isIDNotAccord;
       }
 
-      function resetTodayStatus(){
-        if (shouldResetTodayStatus()){
-          $scope.taskPrototypes.forEach(function(item){
+      function resetTodayStatus(force){
+        if (shouldResetTodayStatus() || force === true) {
+          $scope.taskPrototypes.forEach(function(item) {
             $scope.todayStatus[item.id] = -1;
           });
           $scope.latest.markedTime = new Date();
-          //$localStorage.latest = $scope.latest;
         }
       }
 
       function force_reset(){
-        for (key in Object.keys($scope.todayStatus)) { $scope.todayStatus[key] = -1;}
+        angular.forEach($scope.taskPrototypes, function(value, key){
+          $scope.todayStatus[key] = -1;
+        });
+        var obj = $wilddogObject(wilddog.sync().ref("todayStatus"));
+        obj.$remove().then(function(){
+          obj = $scope.todayStatus;
+          obj.$save().then(function(){
+            console.log("Taskprototypes saved.")
+          })
+        })
+
       }
+
       function force_upload(){
         var obj = $wilddogObject(wilddog.sync().ref("taskPrototypes"));
         console.log(obj);
@@ -321,17 +352,22 @@
 
       }
 
+      function wilddogConfig(){
+        //Wilddog Configuration
+        var config = {
+          //authDomain: "with-u-near.wilddogio.com",
+          syncURL: "https://with-u-near.wilddogio.com"
+        };
+        wilddog.initializeApp(config);
+        console.log("Wilddog in wilddog.js");
+      }
 
 
       $scope.$on('$ionicView.loaded', function(e) { //.loaded, .enter, .leave
         //Life cycle : // http://www.gajotres.net/understanding-ionic-view-lifecycle/
         //TODO: Change it to Promise-based ajax
+        wilddogConfig();
         $scope.dataBuffering(didDataBuffered);
-
-
-
-
-
 
       });
 

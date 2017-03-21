@@ -1,28 +1,24 @@
 <ion-view view-title="Tasks">
+
   <ion-nav-buttons side="left">
-    <!--<button class="button button-positive ion-navicon-round" ng-click="doSomething()">-->
-    <!--</button>-->
+    <button class="button  button-clear button-icon icon ion-android-add"
+            ng-click="showAddPrototypeModal()">
+    </button>
   </ion-nav-buttons>
+
+  <ion-nav-buttons side="right">
+    <button class="button  button-clear button-icon icon ion-refresh"
+            ng-click="force_reset(true)">
+    </button>
+  </ion-nav-buttons>
+
   <ion-content>
     <!-- Refresher -->
-    <!--<ion-refresher on-refresh="hello()"></ion-refresher>-->
     <ion-refresher pulling-text="Pull to refresh..." on-refresh="hello()">
     </ion-refresher>
 
-    <!--<div class="list">-->
-      <!--<button class="button button-positive button-full"-->
-              <!--ng-click="{{button_val}}"> <code>{{button_val}}</code> </button>-->
-      <!--<ion-input ng-init="button_val='array_download()'" ng-model="button_val">-->
-        <!--<label><input class="item-input" ng-model="button_val"></label>-->
-      <!--</ion-input>-->
-    <!--</div>-->
-
-
     <div>
 
-      <!-- <div class="bar-subheader">
-      </div>
- -->
 
     <div class="list card" ng-repeat="(key,item) in taskPrototypes">
 

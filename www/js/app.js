@@ -22,11 +22,6 @@ angular.module('starter', ['ionic','ngStorage','wilddog','starter.controllers', 
     }
 
     // Wilddog Configuration
-    var config = {
-      //authDomain: "with-u-near.wilddogio.com",
-      syncURL: "https://with-u-near.wilddogio.com"
-    };
-    wilddog.initializeApp(config);
 
   });
 })
